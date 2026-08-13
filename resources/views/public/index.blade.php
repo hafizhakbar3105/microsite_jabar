@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JABAR EXPLORE — Official Links</title>
-    <meta name="description" content="Jelajahi Pesona Jawa Barat. Panduan Resmi Wisata, Kuliner, & Hidden Gem.">
+    <title>JABAR EXPLORE — Official Portal</title>
+    <meta name="description" content="Jelajahi Pesona Jawa Barat. Panduan Resmi Wisata, Kuliner, & Hidden Gem Pasundan.">
     
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Tailwind CSS CDN dengan Custom Palette -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,10 +22,10 @@
                 extend: {
                     colors: {
                         jabar: {
-                            primary: '#0F5B38',
-                            secondary: '#1C8A56',
-                            accent: '#E29578',
-                            dark: '#0A1E14',
+                            gold: '#D4AF37',
+                            emerald: '#0F5B38',
+                            teal: '#1C8A56',
+                            dark: '#06140D',
                         }
                     },
                     fontFamily: {
@@ -36,32 +36,23 @@
         }
     </script>
 
-    <!-- CUSTOM ANIMATIONS & EFEK VIVID -->
+    <!-- CUSTOM ANIMATIONS & LUXURY STYLING -->
     <style>
-        /* Animasi Melayang (Floating) */
+        /* Floating Animation */
         @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
         }
         .animate-float {
-            animation: floatSlow 4s ease-in-out infinite;
+            animation: floatSlow 5s ease-in-out infinite;
         }
 
-        /* Animasi Glow Pulsating */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.08); }
+        /* Gold Shimmer Sweep Effect */
+        @keyframes shimmer {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(250%) skewX(-20deg); }
         }
-        .animate-pulse-glow {
-            animation: pulseGlow 5s ease-in-out infinite;
-        }
-
-        /* Efek Kilatan Sinar (Shimmer Sweep) pada Link Card */
-        @keyframes shimmerSweep {
-            0% { transform: translateX(-150%) skewX(-12deg); }
-            100% { transform: translateX(250%) skewX(-12deg); }
-        }
-        .shimmer-effect::before {
+        .shimmer-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -71,156 +62,308 @@
             background: linear-gradient(
                 90deg, 
                 transparent, 
-                rgba(255, 255, 255, 0.4), 
+                rgba(255, 255, 255, 0.2), 
                 transparent
             );
-            transform: translateX(-150%) skewX(-12deg);
+            transform: translateX(-150%) skewX(-20deg);
+            z-index: 10;
         }
-        .group:hover .shimmer-effect::before {
-            animation: shimmerSweep 1s ease-in-out;
+        .group:hover .shimmer-card::before {
+            animation: shimmer 1.2s ease-in-out;
         }
 
-        /* Animasi Pop Entrance */
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.92) translateY(15px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        /* Staggered Entrance Animation */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .animate-pop-in {
-            animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-fade-up {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .grid-card-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .grid-card-item:nth-child(1) { animation-delay: 0.1s; }
+        .grid-card-item:nth-child(2) { animation-delay: 0.2s; }
+        .grid-card-item:nth-child(3) { animation-delay: 0.3s; }
+        .grid-card-item:nth-child(4) { animation-delay: 0.4s; }
+        .grid-card-item:nth-child(5) { animation-delay: 0.5s; }
+        .grid-card-item:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.4);
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="relative min-h-screen font-sans flex flex-col items-center justify-between p-4 sm:p-6 bg-cover bg-center bg-fixed selection:bg-jabar-primary selection:text-white overflow-x-hidden"
+<body class="relative min-h-screen font-sans flex flex-col justify-between p-4 sm:p-8 md:p-12 bg-cover bg-center bg-fixed selection:bg-emerald-500 selection:text-white overflow-x-hidden antialiased text-white"
       style="background-image: url('{{ asset('images/Bandung.jpg') }}');">
 
-    <!-- OVERLAY BACKGROUND SEIMBANG -->
-    <div class="fixed inset-0 bg-black/45 backdrop-blur-[3px] z-0"></div>
+    <!-- ELEMEN AUDIO ANGKLUNG -->
+    <audio id="angklungAudio" loop preload="auto" autoplay>
+        <source src="{{ asset('audio/angklung.mp3') }}" type="audio/mpeg">
+    </audio>
 
-    <!-- CONTAINER UTAMA (GLASS CARD WITH GLOW BLOBS) -->
-    <main class="relative z-10 w-full max-w-md mx-auto my-auto py-6 animate-pop-in">
+    <!-- TOMBOL KONTROL MUSIK FLOATING (KANAN BAWAH) -->
+    <button id="musicToggleBtn" onclick="toggleMusic()" title="Putar / Hentikan Musik Angklung"
+            class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-slate-900/80 backdrop-blur-xl border border-amber-400/40 text-amber-300 flex items-center justify-center text-base shadow-2xl hover:scale-110 hover:border-amber-300 active:scale-95 transition-all duration-300 group">
+        <i id="musicIcon" class="fa-solid fa-compact-disc text-amber-300 animate-spin"></i>
+        <span class="absolute -inset-1 rounded-full bg-amber-400/20 blur-sm group-hover:bg-amber-400/40 transition-all -z-10"></span>
+    </button>
+
+    <!-- OVERLAY GRADIENT LUKSURIUS (DARK EMERALD GLASS EFFECT) -->
+    <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-emerald-950/40 to-black/90 backdrop-blur-[3px] z-0"></div>
+
+    <!-- MAIN CONTAINER (CONTAINER DILEBARKAN UNTUK GRID TAMPILAN MEWAH) -->
+    <main class="relative z-10 w-full max-w-4xl mx-auto my-auto py-6 flex flex-col items-center">
         
-        <!-- AMBIENT GLOW BLOBS (EFEK CAHAYA DIBELAKANG KACA) -->
-        <div class="absolute -top-8 -left-8 w-44 h-44 bg-emerald-400/30 rounded-full blur-3xl animate-pulse-glow pointer-events-none"></div>
-        <div class="absolute -bottom-8 -right-8 w-44 h-44 bg-teal-300/30 rounded-full blur-3xl animate-pulse-glow pointer-events-none" style="animation-delay: 2.5s;"></div>
-
-        <!-- FROSTED GLASS CONTAINER -->
-        <div class="relative w-full bg-white/80 backdrop-blur-2xl border border-white/70 rounded-[2.2rem] p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col items-center text-center">
+        <!-- HEADER PROFILE SECTION -->
+        <div class="animate-fade-up flex flex-col items-center text-center w-full max-w-xl mb-10">
             
-            <!-- 1. AVATAR PROFILE DENGAN RING & ANIMASI FLOAT -->
-            <div class="relative mb-4 group animate-float">
-                <!-- Aura Glow di Belakang Avatar -->
-                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 blur-md opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></div>
+            <!-- AVATAR PROFILE DENGAN AMBIENT RING GOLD & EMERALD GLOW -->
+            <div class="relative mb-5 group animate-float">
+                <div class="absolute -inset-2 rounded-full bg-gradient-to-r from-emerald-500 via-amber-300 to-teal-400 blur-xl opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
                 
-                <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-jabar-primary via-emerald-600 to-teal-500 text-white flex items-center justify-center font-extrabold text-3xl sm:text-4xl shadow-2xl ring-4 ring-white/90 group-hover:scale-105 transition-transform duration-300">
-                    JE
+                <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full ring-4 ring-white/30 shadow-2xl bg-white overflow-hidden p-1 group-hover:ring-amber-300/80 transition-all duration-500">
+                    <img src="{{ asset('images/jabar.png') }}" alt="Logo Jabar Explore" class="w-full h-full object-cover rounded-full">
                 </div>
                 
-                <!-- Badge Centang Hijau (Pulsating) -->
-                <span class="absolute bottom-1 right-1 w-7 h-7 bg-emerald-500 border-2 border-white rounded-full flex items-center justify-center text-white text-xs shadow-lg animate-pulse" title="Akun Resmi">
-                    <i class="fa-solid fa-check"></i>
+                <span class="absolute bottom-1 right-1 w-8 h-8 bg-gradient-to-tr from-emerald-600 to-teal-400 ring-2 ring-white rounded-full flex items-center justify-center text-white text-xs shadow-lg" title="Terverifikasi Resmi">
+                    <i class="fa-solid fa-check text-white font-black"></i>
                 </span>
             </div>
 
-            <!-- 2. PIL OFFICIAL & HANDLE NAME -->
-            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100/90 border border-emerald-300/60 text-jabar-primary text-[11px] font-bold tracking-wide uppercase mb-2.5 shadow-sm hover:scale-105 transition-transform">
-                <i class="fa-solid fa-shield-halved text-xs text-emerald-600"></i> Official Tourism Guide
+            <!-- OFFICIAL BADGE MEWAH -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-amber-400/30 text-amber-300 text-[11px] font-bold tracking-widest uppercase mb-4 shadow-2xl">
+                <i class="fa-solid fa-crown text-amber-400 text-xs"></i> Official Tourism Guide
             </div>
 
-            <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-1 drop-shadow-sm">
+            <!-- TITLE & HANDLE -->
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
                 @jabar.explore
             </h1>
             
-            <!-- 3. BIO DESKRIPSI -->
-            <p class="text-xs sm:text-sm text-gray-600 max-w-xs leading-relaxed font-medium mb-5">
-                Panduan Rekomendasi Wisata Alam, Pantai, Kuliner Khas, & Hidden Gem Pasundan.
+            <!-- BIO DESKRIPSI -->
+            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-medium mb-6 max-w-md drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                Eksplorasi Pesona Alam, Warisan Budaya, Kuliner Khas, & Destinasi Impian Pasundan Jawa Barat.
             </p>
 
-            <!-- 4. SOSIAL MEDIA ICONS (DENGAN COLORFUL GLOW ON HOVER) -->
-            <div class="flex items-center justify-center gap-3 mb-6 w-full">
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/disparbudjabar/" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-rose-500/30 hover:-translate-y-1 transition-all duration-200">
+            <!-- SOSIAL MEDIA ICONS GLOWING -->
+            <div class="flex items-center justify-center gap-4 w-full">
+                <a href="https://www.instagram.com/disparbudjabar/" target="_blank" title="Instagram" class="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center text-lg shadow-lg hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:border-transparent hover:scale-110 active:scale-95 transition-all duration-300">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <!-- TikTok -->
-                <a href="https://www.tiktok.com/@smiling.westjava" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-black hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-1 transition-all duration-200">
+                <a href="https://www.tiktok.com/@smiling.westjava" target="_blank" title="TikTok" class="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center text-lg shadow-lg hover:bg-black hover:border-transparent hover:scale-110 active:scale-95 transition-all duration-300">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
-                <!-- YouTube -->
-                <a href="https://www.youtube.com/@WestJava_Tourism" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-red-600 hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 transition-all duration-200">
+                <a href="https://www.youtube.com/@WestJava_Tourism" target="_blank" title="YouTube" class="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center text-lg shadow-lg hover:bg-red-600 hover:border-transparent hover:scale-110 active:scale-95 transition-all duration-300">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
             </div>
 
-            <!-- GARIS PEMBATAS DEKORATIF -->
-            <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6"></div>
+        </div>
 
-            <!-- 5. DAFTAR TAUTAN DINAMIS (DENGAN EFEK SHIMMER & HOVER ELEVATION) -->
-            <div class="w-full space-y-3.5">
-                @forelse($links as $link)
-                    @php
-                        // Memanggil nama route 'public.redirect' sesuai di web.php
-                        $clickUrl = route('public.redirect', $link->id);
-                    @endphp
+        <!-- DIVIDER DEKORATIF ORNAMEN PASUNDAN -->
+        <div class="w-full flex items-center justify-center gap-4 mb-8 opacity-60">
+            <div class="h-px w-24 bg-gradient-to-r from-transparent to-amber-300"></div>
+            <i class="fa-solid fa-gem text-xs text-amber-300"></i>
+            <div class="h-px w-24 bg-gradient-to-l from-transparent to-amber-300"></div>
+        </div>
 
-                    <a href="{{ $clickUrl }}" target="_blank" class="group relative overflow-hidden block w-full p-3.5 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-200 text-left shimmer-effect">
-                        <div class="flex items-center justify-between relative z-10">
-                            <div class="flex items-center gap-3.5 overflow-hidden">
-                                
-                                <!-- Container Icon/Image (Penambahan overflow-hidden dan logika cek gambar) -->
-                                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-jabar-primary flex-shrink-0 flex items-center justify-center text-base group-hover:bg-jabar-primary group-hover:text-white group-hover:rotate-6 group-hover:scale-105 transition-all duration-200 shadow-sm overflow-hidden">
-                                    @if(!empty($link->image))
-                                        <!-- Menampilkan Gambar -->
-                                        <img src="{{ asset('storage/' . $link->image) }}" alt="{{ $link->title }}" class="w-full h-full object-cover">
-                                    @elseif(!empty($link->icon))
-                                        <!-- Menampilkan Ikon -->
-                                        <i class="{{ $link->icon }}"></i>
-                                    @else
-                                        <!-- Default Ikon -->
-                                        <i class="fa-solid fa-compass"></i>
-                                    @endif
-                                </div>
-                                
-                                <!-- Judul & Deskripsi Tautan -->
-                                <div class="overflow-hidden">
-                                    <h2 class="font-bold text-gray-900 group-hover:text-jabar-primary text-sm leading-tight transition-colors truncate">
-                                        {{ $link->title }}
-                                    </h2>
-                                    @if(!empty($link->description))
-                                        <p class="text-[11px] text-gray-500 truncate mt-0.5 font-medium group-hover:text-gray-700 transition-colors">
-                                            {{ $link->description }}
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
+        <!-- DAFTAR TAUTAN MODEL GRID (2 KOLOM RESPONSINTIF) -->
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            @forelse($links as $link)
+                @php
+                    $clickUrl = route('public.redirect', $link->id);
+                @endphp
 
-                            <!-- Arrow Icon (dengan Animasi Geser & Bounce) -->
-                            <div class="flex-shrink-0 ml-2 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-emerald-100 group-hover:text-jabar-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-                            </div>
+                <a href="{{ $clickUrl }}" target="_blank" class="grid-card-item group relative overflow-hidden block w-full p-4 sm:p-5 bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 hover:border-emerald-400/80 shadow-2xl hover:shadow-emerald-950/80 hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300 shimmer-card">
+                    
+                    <!-- BACKGROUND ACCENT GLOW saat HOVER -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                    <div class="flex items-center gap-4 relative z-10">
+                        
+                        <!-- ICON / GAMBAR THUMBNAIL MEWAH -->
+                        <div class="w-14 h-14 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 text-white flex-shrink-0 flex items-center justify-center text-xl group-hover:bg-gradient-to-br group-hover:from-emerald-500 group-hover:to-teal-600 group-hover:border-transparent group-hover:scale-105 group-hover:rotate-3 transition-all duration-300 shadow-lg overflow-hidden">
+                            @if(!empty($link->image))
+                                <img src="{{ asset('storage/' . $link->image) }}" alt="{{ $link->title }}" class="w-full h-full object-cover">
+                            @elseif(!empty($link->icon))
+                                <i class="{{ $link->icon }} group-hover:text-white"></i>
+                            @else
+                                <i class="fa-solid fa-compass text-emerald-300 group-hover:text-white"></i>
+                            @endif
                         </div>
-                    </a>
-                @empty
-                    <!-- EMPTY STATE -->
-                    <div class="py-8 px-4 bg-gray-50/90 rounded-2xl border-2 border-dashed border-gray-200 text-center">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-emerald-100 text-jabar-primary flex items-center justify-center text-lg animate-bounce">
-                            <i class="fa-solid fa-link-slash"></i>
+                        
+                        <!-- TEXT CONTENT -->
+                        <div class="overflow-hidden flex-grow pr-1 text-left">
+                            <h2 class="font-bold text-white text-base sm:text-[15px] leading-tight transition-colors truncate drop-shadow-sm group-hover:text-amber-300">
+                                {{ $link->title }}
+                            </h2>
+                            @if(!empty($link->description))
+                                <p class="text-xs text-gray-200 line-clamp-2 mt-1 font-normal opacity-85 group-hover:opacity-100 leading-relaxed">
+                                    {{ $link->description }}
+                                </p>
+                            @else
+                                <p class="text-[11px] text-emerald-300/80 mt-1 font-semibold flex items-center gap-1">
+                                    <span>Jelajahi Sekarang</span>
+                                    <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                                </p>
+                            @endif
                         </div>
-                        <h3 class="text-sm font-bold text-gray-800 mb-1">Belum Ada Tautan</h3>
-                        <p class="text-xs text-gray-500 font-medium max-w-[200px] mx-auto">
-                            Tautan wisata & rekomendasi akan segera muncul di sini.
-                        </p>
+
+                        <!-- TOMBOL ARROW KANAN -->
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-amber-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all duration-300 border border-white/10 shadow-md">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </div>
                     </div>
-                @endforelse
-            </div>
-
+                </a>
+            @empty
+                <div class="col-span-full py-12 px-4 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 text-center text-white">
+                    <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-white/20 flex items-center justify-center text-amber-300 text-2xl animate-bounce">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="text-base font-bold mb-1">Belum Ada Destinasi</h3>
+                    <p class="text-xs text-gray-300 font-medium max-w-xs mx-auto leading-relaxed">
+                        Rekomendasi tempat wisata & hidden gem Jawa Barat akan ditambahkan segera.
+                    </p>
+                </div>
+            @endforelse
         </div>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="relative z-10 py-4 text-center text-xs font-medium text-white/90 drop-shadow-md">
-        <p>&copy; 2026 <span class="font-bold text-emerald-300">JABAR EXPLORE</span>. All rights reserved.</p>
+    <!-- FOOTER MEWAH -->
+    <footer class="relative z-10 py-6 text-center text-xs font-medium text-white/70 drop-shadow-md tracking-wider">
+        <p>&copy; 2026 <span class="text-amber-300 font-bold">JABAR EXPLORE</span> — Pesona Pariwisata Jawa Barat.</p>
     </footer>
+
+    <!-- SCRIPT AUDIO NARASI & BACKSOUND ANGKLUNG -->
+    <script>
+        let hasSpoken = false;
+        let isMusicPlaying = false;
+
+        const angklungAudio = document.getElementById('angklungAudio');
+        const musicIcon = document.getElementById('musicIcon');
+
+        // 1. PENYETELAN SUARA NARASI (SPEECH SYNTHESIS)
+        let availableVoices = [];
+        function loadVoices() {
+            if ('speechSynthesis' in window) {
+                availableVoices = window.speechSynthesis.getVoices();
+            }
+        }
+
+        if ('speechSynthesis' in window) {
+            loadVoices();
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
+
+        function playWelcomeAudio() {
+            if (hasSpoken) return;
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.resume();
+
+                const text = "Wilujeung sumping di Jawa Barat Explore";
+                const utterance = new SpeechSynthesisUtterance(text);
+                
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+
+                if (availableVoices.length > 0) {
+                    const indoVoice = availableVoices.find(v => v.lang.includes('id') || v.lang.includes('su'));
+                    if (indoVoice) utterance.voice = indoVoice;
+                }
+
+                utterance.onend = function() {
+                    hasSpoken = true;
+                };
+
+                utterance.onerror = function(e) {
+                    console.log("SpeechSynthesis terhalang kebijakan browser.", e);
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. FUNGSI MEMUTAR MUSIK LATAR ANGKLUNG
+        function startBgMusic() {
+            if (angklungAudio) {
+                angklungAudio.volume = 0.25; // Volume 25% agar narasi tetap terdengar lembut
+                const playPromise = angklungAudio.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isMusicPlaying = true;
+                        updateMusicUI();
+                    }).catch(err => {
+                        console.log("Autoplay musik ditahan browser. Menunggu interaksi pertama.", err);
+                    });
+                }
+            }
+        }
+
+        // 3. KONTROL MANUAL TOMBOL PLAY / PAUSE
+        function toggleMusic() {
+            if (!angklungAudio) return;
+            
+            if (angklungAudio.paused) {
+                angklungAudio.play();
+                isMusicPlaying = true;
+            } else {
+                angklungAudio.pause();
+                isMusicPlaying = false;
+            }
+            updateMusicUI();
+        }
+
+        function updateMusicUI() {
+            if (isMusicPlaying) {
+                musicIcon.className = "fa-solid fa-compact-disc text-amber-300 animate-spin";
+            } else {
+                musicIcon.className = "fa-solid fa-volume-xmark text-gray-400";
+            }
+        }
+
+        // 4. JALANKAN OTOMATIS SAAT MEMUAT HALAMAN
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                playWelcomeAudio();
+                startBgMusic();
+            }, 400);
+        });
+
+        // 5. PENANGANAN BEBAS BLOKIR BROWSER (MEMUTAR PADA INTERAKSI PERTAMA)
+        const unlockEvents = ['pointerdown', 'touchstart', 'click', 'scroll', 'keydown'];
+        
+        function unlockAudio() {
+            if (!hasSpoken) {
+                playWelcomeAudio();
+            }
+            startBgMusic();
+
+            unlockEvents.forEach(evt => {
+                document.removeEventListener(evt, unlockAudio);
+            });
+        }
+
+        unlockEvents.forEach(evt => {
+            document.addEventListener(evt, unlockAudio, { once: true });
+        });
+    </script>
 
 </body>
 </html>
