@@ -14,7 +14,7 @@ Proyek ini adalah sistem manajemen tautan (Bio-Link) sederhana yang dibangun men
 
 Berikut adalah hasil akhir dari kustomisasi Halaman Publik Bio-Link:
 
-![Screenshot Halaman Publik](screenshot-publik.png)
+![Screenshot Halaman Publik](public/images/screenshot-publik.png)
 
 *(Catatan: Pastikan file gambar screenshot Anda diunggah ke GitHub dengan nama `screenshot-publik.png` dan diletakkan di folder yang sama dengan file README.md ini, atau ubah nama file di atas sesuai dengan nama file screenshot Anda).*
 
