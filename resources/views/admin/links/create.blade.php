@@ -40,7 +40,7 @@
             <!-- Field: URL Tujuan -->
             <div class="space-y-2">
                 <label for="url" class="block text-sm font-extrabold text-slate-900">URL Tujuan <span class="text-rose-500">*</span></label>
-                <input type="url" id="url" name="url" value="{{ old('url') }}" placeholder="<https://dribbble.com/username>" required
+                <input type="url" id="url" name="url" value="{{ old('url') }}" placeholder="https://dribbble.com/username" required
                        class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-900 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 font-medium text-slate-900 transition-all">
                 @error('url')
                     <p class="text-xs font-bold text-rose-600 flex items-center gap-1 mt-1">
@@ -108,7 +108,8 @@
                                 <span id="is_active_hint" class="text-[11px] font-semibold text-slate-500">Tautan akan terlihat di halaman publik</span>
                             </div>
                         </div>
-                        <input type="checkbox" id="is_active" name="is_active" class="sr-only peer" checked>
+                        <!-- Cek nilai old('is_active') untuk mempertahankan status setelah validasi gagal -->
+                        <input type="checkbox" id="is_active" name="is_active" class="sr-only peer" {{ old('is_active', true) ? 'checked' : '' }}>
                         <span class="relative w-12 h-7 bg-slate-300 peer-checked:bg-emerald-400 rounded-full border-2 border-slate-900 transition-colors shrink-0 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:bg-white after:rounded-full after:border-2 after:border-slate-900 transition-transform peer-checked:after:translate-x-5"></span>
                     </div>
                 </label>
@@ -126,4 +127,56 @@
         </form>
     </div>
 </div>
+
+<!-- Script untuk Interactive Image Preview -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('image');
+        const previewEmpty = document.getElementById('preview-empty');
+        const previewFilled = document.getElementById('preview-filled');
+        const previewImg = document.getElementById('preview-img');
+        const previewFileName = document.getElementById('preview-file-name');
+        const previewFileSize = document.getElementById('preview-file-size');
+        const btnRemove = document.getElementById('preview-remove');
+
+        // Membuka dialog file saat area "preview-empty" diklik
+        if(previewEmpty && fileInput) {
+            previewEmpty.addEventListener('click', () => {
+                fileInput.click();
+            });
+        }
+
+        // Memproses file yang dipilih dan menampilkan preview
+        if(fileInput) {
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Update teks nama & ukuran file
+                    previewFileName.textContent = file.name;
+                    const sizeKB = (file.size / 1024).toFixed(1);
+                    previewFileSize.textContent = sizeKB + ' KB';
+
+                    // Membaca file dan menampilkan gambar
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        previewImg.src = event.target.result;
+                        previewEmpty.classList.add('hidden');
+                        previewFilled.classList.remove('hidden');
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Menghapus gambar dan mengembalikan ke state awal
+        if(btnRemove && fileInput) {
+            btnRemove.addEventListener('click', function() {
+                fileInput.value = ''; // Reset input file
+                previewImg.src = '';
+                previewEmpty.classList.remove('hidden');
+                previewFilled.classList.add('hidden');
+            });
+        }
+    });
+</script>
 @endsection

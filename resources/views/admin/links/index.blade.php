@@ -35,13 +35,19 @@
                     @forelse($links as $link)
                         <tr class="hover:bg-emerald-50/30 transition-colors">
                             
-                            <!-- Judul & Ikon -->
+                            <!-- Judul & Gambar/Ikon -->
                             <td class="py-4 px-6">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-jabar-primary flex items-center justify-center shrink-0 border border-emerald-100/60 font-bold">
-                                        @if($link->icon)
+                                    <!-- Container yang sudah ditambahkan overflow-hidden -->
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-jabar-primary flex items-center justify-center shrink-0 border border-emerald-100/60 font-bold overflow-hidden">
+                                        @if(!empty($link->image))
+                                            <!-- Menampilkan Gambar -->
+                                            <img src="{{ asset('storage/' . $link->image) }}" alt="{{ $link->title }}" class="w-full h-full object-cover">
+                                        @elseif(!empty($link->icon))
+                                            <!-- Menampilkan Ikon (Jika gambar tidak ada) -->
                                             <i class="{{ $link->icon }} text-base"></i>
                                         @else
+                                            <!-- Default Ikon Lucide -->
                                             <i data-lucide="link" class="w-5 h-5"></i>
                                         @endif
                                     </div>

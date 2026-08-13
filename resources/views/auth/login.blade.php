@@ -36,7 +36,7 @@
     </script>
 </head>
 <body class="relative min-h-screen font-sans antialiased flex flex-col justify-between p-4 sm:p-6 bg-cover bg-center bg-fixed selection:bg-jabar-primary selection:text-white overflow-x-hidden"
-      style="background-image: url('{{ asset('images/bg-wisata.jpg') }}');">
+      style="background-image: url('{{ asset('images/Bandung.jpg') }}');">
 
     <!-- OVERLAY BACKGROUND GELAP -->
     <div class="fixed inset-0 bg-black/50 backdrop-blur-[3px] z-0"></div>

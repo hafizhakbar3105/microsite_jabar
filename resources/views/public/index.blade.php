@@ -138,20 +138,16 @@
             <!-- 4. SOSIAL MEDIA ICONS (DENGAN COLORFUL GLOW ON HOVER) -->
             <div class="flex items-center justify-center gap-3 mb-6 w-full">
                 <!-- Instagram -->
-                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-rose-500/30 hover:-translate-y-1 transition-all duration-200">
+                <a href="https://www.instagram.com/disparbudjabar/" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-rose-500/30 hover:-translate-y-1 transition-all duration-200">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
                 <!-- TikTok -->
-                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-black hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-1 transition-all duration-200">
+                <a href="https://www.tiktok.com/@smiling.westjava" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-black hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-1 transition-all duration-200">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
                 <!-- YouTube -->
-                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-red-600 hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 transition-all duration-200">
+                <a href="https://www.youtube.com/@WestJava_Tourism" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-red-600 hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 transition-all duration-200">
                     <i class="fa-brands fa-youtube"></i>
-                </a>
-                <!-- Email -->
-                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 flex items-center justify-center text-sm shadow-sm hover:bg-jabar-primary hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-1 transition-all duration-200">
-                    <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
 
@@ -162,17 +158,24 @@
             <div class="w-full space-y-3.5">
                 @forelse($links as $link)
                     @php
-                        $clickUrl = route('links.click', $link->id) ?? (route('click', $link->id) ?? url('/click/' . $link->id));
+                        // Memanggil nama route 'public.redirect' sesuai di web.php
+                        $clickUrl = route('public.redirect', $link->id);
                     @endphp
 
                     <a href="{{ $clickUrl }}" target="_blank" class="group relative overflow-hidden block w-full p-3.5 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-200 text-left shimmer-effect">
                         <div class="flex items-center justify-between relative z-10">
                             <div class="flex items-center gap-3.5 overflow-hidden">
-                                <!-- Container Icon (dengan Animasi Rotasi Halus) -->
-                                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-jabar-primary flex-shrink-0 flex items-center justify-center text-base group-hover:bg-jabar-primary group-hover:text-white group-hover:rotate-6 group-hover:scale-105 transition-all duration-200 shadow-sm">
-                                    @if(!empty($link->icon))
+                                
+                                <!-- Container Icon/Image (Penambahan overflow-hidden dan logika cek gambar) -->
+                                <div class="w-11 h-11 rounded-xl bg-emerald-50 text-jabar-primary flex-shrink-0 flex items-center justify-center text-base group-hover:bg-jabar-primary group-hover:text-white group-hover:rotate-6 group-hover:scale-105 transition-all duration-200 shadow-sm overflow-hidden">
+                                    @if(!empty($link->image))
+                                        <!-- Menampilkan Gambar -->
+                                        <img src="{{ asset('storage/' . $link->image) }}" alt="{{ $link->title }}" class="w-full h-full object-cover">
+                                    @elseif(!empty($link->icon))
+                                        <!-- Menampilkan Ikon -->
                                         <i class="{{ $link->icon }}"></i>
                                     @else
+                                        <!-- Default Ikon -->
                                         <i class="fa-solid fa-compass"></i>
                                     @endif
                                 </div>
