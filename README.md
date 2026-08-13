@@ -6,7 +6,7 @@ Proyek ini adalah sistem manajemen tautan (Bio-Link) sederhana yang dibangun men
 
 - **Nama Lengkap:**+ Muhammad Hafizh Akbar Solehuidn 
 - **NIM:** 2430511012
-- **Kelompok:** 3
+- **Kelompok:** 2
 
 ---
 
@@ -20,8 +20,3 @@ Berikut adalah hasil akhir dari kustomisasi Halaman Publik Bio-Link:
 
 ---
 
-## 🚀 Cara Menjalankan Proyek Secara Lokal
-
-1. Clone repositori ini:
-   ```bash
-   git clone [URL_REPOSITORI_ANDA]
